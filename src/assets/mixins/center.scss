@@ -1,0 +1,90 @@
+/*-- Center elements and child elements --
+-center() - center element horizontally based on his position "relative or absolute"
+-center(childs) - Center childs horizontally
+-center(childs,vertically) - center childs vertically
+-center(childs,totally) - center childs vertically and horizontally*/
+@mixin centerAbsolute(){
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left:0;
+  right:0;
+}
+@mixin center($a:'',$p:''){
+  @if position == relative and $a!=childs{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @if (position == absolute and $a!=childs) or (position == fixed and $a!=childs){
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  @if $a == childs{
+    display: flex;
+    @if $p == totally{
+      align-items: center;
+      justify-content: center;
+    }
+    @if $p == vertically{
+      align-items: center;
+    }
+    @if $p=''{
+      justify-content: center;
+    }
+  }
+}
+
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+
+
+//@mixin centerTwo($a:'',$p:''){
+//	@if position == relative and $a!:childs{
+//		margin-left: auto;
+//		margin-right: auto;
+//	}
+//	@if (@position == absolute and $a !: childs) or (@position == fixed and $a!:childs){
+//		left:0;
+//		right:0;
+//		margin-left:auto;
+//		margin-right:auto;
+//	}
+//	@if $a == childs{
+//		display: flex;
+//		@if $p == totally{
+//			align-items: center;
+//			justify-content: center;
+//		}
+//		@if $p == vertically{
+//			align-items: center;
+//		}
+//		@if $p=''{
+//			justify-content: center;
+//		}
+//	}
+//}
