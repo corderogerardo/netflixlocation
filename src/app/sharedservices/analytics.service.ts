@@ -10,8 +10,8 @@ export class AnalyticsService {
     @Inject(PLATFORM_ID) private platformId: any,
     @Inject(APP_ID) private appId: string,
     private elRef: ElementRef,
-    private _title: Title,
-    private _meta: Meta
+    private _title: string,
+    private _meta: string
   ) { }
 
   gtmEvent(category, action, label) {
