@@ -1,0 +1,83 @@
+// variables:
+$breakpoint-xs: 320px;
+$breakpoint-sm: 767px;
+$breakpoint-md: 1023px;
+$breakpoint-lg: 1360px;
+
+$iphone5-breakpoint-width: 320px;
+$x-small-breakpoint-width: 576px;
+$medium-material-breakpoint-width: 600px;
+$small-breakpoint-width: 768px;
+$medium-breakpoint-width: 992px;
+$large-breakpoint-width: 1200px;
+
+@mixin media($media) {
+  @if $media == xs {
+    @media (max-width: $breakpoint-sm) { @content; }
+  }
+  @else if $media == sm {
+    @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) { @content; }
+  }
+  @else if $media == md {
+    @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg) { @content; }
+  }
+  @else if $media == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+}
+
+$devices: (
+    phone: 320px,
+    tablet: 768px,
+    desktop: 992px,
+    large-desktop: 1200px
+);
+
+@mixin min-device($device: map-get($devices, 'phone')) {
+    @if map-has-key($devices, $device) {
+        @media screen and (min-width: map-get($devices, $device)) {
+            @content;
+        }
+    }
+}
+
+@mixin max-device($device: map-get($devices, 'phone')) {
+    @if map-has-key($devices, $device) {
+        @media screen and (max-width: map-get($devices, $device) - 1) {
+            @content;
+        }
+    }
+}
+
+@mixin only-device($device: map-get($devices, 'phone')) {
+    @if map-has-key($devices, $device) {
+        $devices-length: length($devices);
+        $map-list: map-keys($devices);
+
+        @if index($map-list, $device) == $devices-length {
+            @include min-device($device) {
+                @content;
+            }
+        } @else {
+            $next-device-index: index($map-list, $device) + 1;
+            $next-device-key: nth($map-list, $next-device-index);
+
+            @media screen and (min-width: map-get($devices, $device)) and (max-width: map-get($devices, $next-device-key) - 1) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin between-devices(
+    $min-device: map-get($devices, 'phone'),
+    $max-device: map-get($devices, 'tablet')
+) {
+    @if map-has-key($devices, $min-device) and
+        map-has-key($devices, $max-device)
+    {
+        @media screen and (min-width: map-get($devices, $min-device)) and (max-width: map-get($devices, $max-device) - 1) {
+            @content;
+        }
+    }
+}

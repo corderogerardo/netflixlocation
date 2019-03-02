@@ -1,0 +1,12 @@
+$type:'';
+@mixin animate($type:''){
+	@if $type == ''{
+		transition: .15s linear;
+	}
+	@if $type == long{
+		transition:.3s linear
+	}
+	@if $type is a 'unit'{
+		transition: $type linear;
+	}
+}
