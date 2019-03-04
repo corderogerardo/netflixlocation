@@ -1,3 +1,24 @@
-h2{
-  font-family: 'Muli', sans-serif;
+@import '~src/assets/indexmixins';
+
+.main-container{
+  @include flexcontainer(center, center, row);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 90vh;
+
+  app-sidenav{
+    width: 20vw;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  section{
+    padding: 0;
+    margin: 0;
+    width: 80vw;
+    height: 100%;
+    border: .3px solid rgba(gray, .5);
+  }
+
 }

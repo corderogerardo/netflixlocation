@@ -2,7 +2,7 @@
 
 .main-menu{
   width: 100%;
-  height: dynamic-resize(40, 50);
+  height: 10vh;
   font-family: 'Muli', sans-serif;
   @include flexcontainer(center, center, row);
   position: relative;
