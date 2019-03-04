@@ -1,0 +1,32 @@
+@import '~src/assets/indexmixins';
+
+.main-menu{
+  width: 100%;
+  height: dynamic-resize(40, 50);
+  font-family: 'Muli', sans-serif;
+  @include flexcontainer(center, center, row);
+  position: relative;
+  border-bottom: 1px solid rgba(lightgray, .8);
+  @include min-device('desktop'){
+  }
+  .menu-container{
+    width: 90%;
+    height: 100%;
+    @include flexcontainer(center, space-between, row);
+    h1{
+      letter-spacing: 2px;
+    }
+    h2{
+      width: 150px;
+      @include flexcontainer(center, center, row);
+      img{
+        width: 50px;
+        height: 50px;
+      }
+      a{
+        color: green;
+        text-decoration: none;
+      }
+    }
+  }
+}
