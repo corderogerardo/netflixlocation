@@ -1,0 +1,77 @@
+@import '~src/assets/indexmixins';
+
+.peliculasheader{
+  padding: 2%;
+  width: 100%;
+  height: 10%;
+  @include flexcontainer(center, space-between, row);
+  h2{
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+  }
+  a{
+    font-family: 'Muli', sans-serif;
+    font-weight: 100;
+    box-shadow: aliceblue;
+    text-decoration: none;
+    text-align: center;
+    padding: 1%;
+    width: 15%;
+    border: .5px solid rgba(black, .8);
+    &:hover{
+      background-color: black;
+      color: white;
+    }
+  }
+}
+.peliculasmain{
+  padding: 2%;
+  .table{
+    padding: 0;
+    margin: 0;
+    border: 2px solid black;
+    thead{
+      padding: 0;
+      margin: 0;
+      background-color: rgba(gray, .2);
+      tr{
+        text-align: left;
+      }
+    }
+    tbody{
+      padding: 0;
+      margin: 0;
+      tr{
+        td{
+        }
+      }
+    }
+    tfoot{
+      background-color: rgba(black, .1);
+      padding: 0;
+      margin: 0;
+      tr{
+        td{
+        }
+      }
+    }
+  }
+}
+/deep/ mfpaginator{
+  @include flexcontainer(center, center, row);
+  padding: 0;
+  margin: 0;
+}
+/deep/ .pagination{
+  width: 20%;
+  @include centerAbsolute();
+  @include flexcontainer(center, center, row);
+  position: relative;
+  li{
+    width: 100%;
+    list-style: none;
+    a{
+      text-decoration: none;
+    }
+  }
+}
