@@ -1,0 +1,23 @@
+@import "~src/assets/indexmixins";
+
+:host{
+  font-family: 'Muli', sans-serif;
+}
+
+.backdrop{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(black, .2);
+  @include center(childs, totally);
+  @include centerAbsolute();
+  top: 0;
+  .newMovie{
+    border-radius: 20px;
+    background-color: white;
+    position: relative;
+    width: 50%;
+    height: 50%;
+    @include flexcontainer(center, center, column);
+  }
+
+}

@@ -1,3 +1,22 @@
-<p>
-  formpelicula works!
-</p>
+<div class="close" (click)="closing()">X</div>
+<form>
+  <section class="formPelisInput">
+    <label for="Nombre de pelicula">Nombre de película</label>
+    <input type="text" [(ngModel)]="movieName" name="moviename" id="moviename"/>
+  </section>
+
+  <section class="formPelisInput">
+    <label for="Fecha de la publicacion">Fecha de Publicacipon</label>
+    <input type="date" [(ngModel)]="movieDate" name="moviedate" id="moviedate"/>
+  </section>
+
+  <section class="formPelisInput">
+    <label for="Estado">Estado</label>
+    <select name="state" [(ngModel)]="movieState" id="" state>
+      <option value="Select">Seleccionar</option>
+      <option value="activo">Activo</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+  </section>
+  <button type="button" (click)="saveData()">Guardar</button>
+</form>

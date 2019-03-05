@@ -1,0 +1,31 @@
+@import "~src/assets/indexmixins";
+
+.close{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+form{
+  width: 400px;
+  height: 200px;
+  @include flexcontainer(center, space-around, column);
+  .formPelisInput{
+    width: 100%;
+    @include flexcontainer(center, space-around, row);
+    label{
+      width: 40%;
+    }
+    input, select{
+      width: 60%;
+    }
+  }
+  button{
+    width: 100px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: none;
+  }
+}

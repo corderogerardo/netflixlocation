@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-formpelicula',
@@ -6,10 +6,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./formpelicula.component.scss']
 })
 export class FormpeliculaComponent implements OnInit {
+  @Output() returnData = new EventEmitter();
+  @Output() closeForm = new EventEmitter();
+  @Input() getData: any;
 
-  constructor() { }
+  private movieName: string;
+  private movieDate: any;
+  private movieState: string;
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    if (this.getData){
+      this.movieName = this.getData.movieName;
+      this.movieDate = this.getData.movieDate;
+      this.movieState = this.getData.movieState;
+    }
+  }
+
+  saveData(){
+    const newObject = {
+      movieName: this.movieName,
+      movieDate: this.movieDate,
+      movieState: this.movieState
+    };
+    this.returnData.emit({...newObject});
+  }
+
+  closing(){
+    this.closeForm.emit({close:true});
+  }
 }

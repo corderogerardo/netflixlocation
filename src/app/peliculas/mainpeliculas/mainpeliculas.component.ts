@@ -14,10 +14,17 @@ export class MainpeliculasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.servicePeliculas.getMovies().subscribe((response) => {
-      console.log('response movies ', response['results']);
-      this.dataPeliculas = response['results'];
-    });
+    const dataPeliculas = JSON.parse(localStorage.getItem('movies'));
+
+    if(dataPeliculas){
+      this.dataPeliculas = dataPeliculas;
+    }else{
+      this.servicePeliculas.getMovies().subscribe((response) => {
+        console.log('response movies ', response['results']);
+        this.dataPeliculas = response['results'];
+        localStorage.setItem('movies', JSON.stringify(this.dataPeliculas));
+      });
+    }
   }
 
 }
