@@ -29,7 +29,7 @@
       <td>{{item.title}}</td>
       <td>{{item.release_date}}</td>
       <td>{{item.video | uppercase}}</td>
-      <td><a >Editar</a> <a >Eliminar</a></td>
+      <td><a (click)="editMovie(item)"><img src="assets/images/edit.png" width="20px" alt=""></a> &nbsp; &nbsp; <a (click)="deleteMovie(item.id)"><img src="assets/images/delete.png" width="20px" alt=""></a></td>
     </tr>
     </tbody>
     <tfoot>
