@@ -1,3 +1,6 @@
-<p>
-  newpelicula works!
-</p>
+<div class="backdrop">
+  <section class="newMovie">
+    <h2>Nueva Pelicula</h2>
+    <app-formpelicula [getData]="newData" (closeForm)="closeForm()" (returnData)="gettingData($event)"></app-formpelicula>
+  </section>
+</div>
